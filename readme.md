@@ -1,6 +1,6 @@
 ## Nguyên Hà Tech Framework
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
+[![Build Status](https://travis-ci.org/fsd14/nht-starter.svg)](https://travis-ci.org/laravel/framework)
 
 Core framework của Nguyên Hà dựa trên nền tảng framework Laravel 5.
 
