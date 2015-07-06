@@ -11,14 +11,27 @@
 |
 */
 
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+	// Admin auth page
+	Route::get('login', 'AuthController@login');
+	Route::post('login', 'AuthController@authenticate');
+	Route::get('logout', 'AuthController@logout');
+	Route::group(['middleware' => 'admin'], function() {
+		// Dashboard
+		Route::get('dashboard', [
+			'as' => 'dashboard',
+			'uses' => 'AuthController@dashboard'
+		]);
+
+		Route::resource('users', UserController::class);
+	});
+});
+
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admin'], function() {
-
-	// Admin login page
-	Route::get('login', 'AdminController@index');
-
-	Route::resource('users', UserController::class);
-});
+// Route::controller([
+//       'auth' => 'Auth\AuthController',
+//       'password' => 'Auth\PasswordController'
+// ]);

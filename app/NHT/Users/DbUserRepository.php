@@ -1,4 +1,6 @@
-<?php namespace App\NHT\Users;
+<?php
+
+namespace App\NHT\Users;
 
 use App\NHT\Core\BaseRepository;
 use App\NHT\Users\User;
@@ -16,6 +18,11 @@ class DbUserRepository extends BaseRepository implements UserRepository
 	public function __construct(User $model)
 	{
 		$this->model = $model;
+	}
+
+	public function getByEmail($email)
+	{
+		return $this->model->where('email', $email)->first();
 	}
 
 	public function getActivedUser()

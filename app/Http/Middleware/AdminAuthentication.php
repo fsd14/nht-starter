@@ -34,7 +34,7 @@ class AdminAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->check()) {
+        if (! ($this->auth->check() && $this->auth->user()->hasRole('admin'))) {
             return redirect()->guest('admin/login');
         }
 

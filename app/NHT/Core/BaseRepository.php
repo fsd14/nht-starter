@@ -1,4 +1,6 @@
-<?php namespace App\NHT\Core;
+<?php
+
+namespace App\NHT\Core;
 
 /**
  * An abstract class for repository.
@@ -30,5 +32,10 @@ abstract class BaseRepository
 	public function update(FormRequest $request)
 	{
 		return $this->model->update($request->all());
+	}
+
+	public function delete()
+	{
+		return $this->model->delete();
 	}
 }

@@ -1,4 +1,6 @@
-<?php namespace App\NHT\Users;
+<?php
+
+namespace App\NHT\Users;
 
 /**
  * Interface description.
@@ -7,5 +9,6 @@
  */
 interface UserRepository
 {
+	public function getByEmail($email);
 	public function getActivedUser();
 }
