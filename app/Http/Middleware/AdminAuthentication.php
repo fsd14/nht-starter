@@ -1,28 +1,28 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Nht\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
+use Nht\Hocs\Users\UserRepository;
 
 class AdminAuthentication
 {
     /**
-     * The Guard implementation.
+     * User
      *
-     * @var Guard
+     * @var User
      */
-    protected $auth;
+    protected $user;
 
     /**
      * Create a new filter instance.
      *
-     * @param  Guard  $auth
+     * @param  UserRepository  $user
      * @return void
      */
-    public function __construct(Guard $auth)
+    public function __construct(UserRepository $user)
     {
-        $this->auth = $auth;
+        $this->user = $user;
     }
 
     /**
@@ -34,7 +34,7 @@ class AdminAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if (! ($this->auth->check() && $this->auth->user()->hasRole('admin'))) {
+        if (! $this->user->isAdmin()) {
             return redirect()->guest('admin/login');
         }
 

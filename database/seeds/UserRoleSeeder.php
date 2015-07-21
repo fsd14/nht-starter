@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\NHT\Users\UserRepository;
-use App\NHT\Entrusts\RoleRepository;
+use App\Hocs\Users\UserRepository;
+use App\Hocs\Entrusts\RoleRepository;
 
 class UserRoleSeeder extends Seeder
 {

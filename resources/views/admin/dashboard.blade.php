@@ -1,7 +1,7 @@
-@extends('admin.master')
+@extends('admin/layouts/master')
 
 @section('main-content')
-	<h1>Dashboard</h1>
+	<h1>{{ trans('admin/general.modules.dashboard') }}</h1>
 	<!--mini statistics start-->
 	<div class="row">
 		 <div class="col-md-3">

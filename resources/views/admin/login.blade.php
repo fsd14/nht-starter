@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Administrator">
+	<meta name="description" content="{{ trans('admin/general.title') }}">
 	<link rel="shortcut icon" href="images/favicon.png">
 
-	<title>Login page</title>
+	<title>{{ trans('admin/general.title') }}</title>
 
 	<!--Core CSS -->
 	<link href="/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -30,25 +30,17 @@
 	<body class="login-body">
 		<div class="container">
 			<form class="form-signin" method="post" action="">
-				<h2 class="form-signin-heading">Administrator</h2>
+				<h2 class="form-signin-heading">{{ trans('admin/general.heading') }}</h2>
 				<div class="login-wrap">
 					<div class="user-login-info">
-						<input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" autofocus>
-						<input type="password" name="password" class="form-control" placeholder="Password">
+						<input type="text" name="email" class="form-control" placeholder="{{ trans('form.email') }}" value="{{ old('email') }}" autofocus>
+						<input type="password" name="password" class="form-control" placeholder="{{ trans('form.password') }}">
 					</div>
 					<label class="checkbox">
-						<input type="checkbox" name="remember"> Remember me
+						<input type="checkbox" name="remember"> {{ trans('form.remember') }}
 					</label>
-					<ul>
-						@foreach ($errors->all() as $error)
-							<li class="text-danger">{{ $error }}</li>
-						@endforeach
-						@if (session('message'))
-							<li class="text-danger">{{ session('message') }}</li>
-							<li class="text-danger">Thực hiện login thất bại quá 3 lần tài khoản sẽ bị tạm khóa. Đã thất bại {{ session('countLoginFails') }} lần.</li>
-						@endif
-					</ul>
-					<button class="btn btn-lg btn-login btn-block" type="submit">Log in</button>
+					@include('admin/partials/notifications')
+					<button class="btn btn-lg btn-login btn-block" type="submit">{{ trans('general.login') }}</button>
 					{!! csrf_field() !!}
 				</div>
 			</form>

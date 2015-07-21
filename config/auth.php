@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => App\NHT\Users\User::class,
+    'model' => Nht\Hocs\Users\User::class,
 
     /*
     |--------------------------------------------------------------------------

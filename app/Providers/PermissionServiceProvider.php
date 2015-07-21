@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Nht\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +23,6 @@ class PermissionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('App\NHT\Entrusts\RoleRepository', 'App\NHT\Entrusts\DbRoleRepository');
+        $this->app->singleton('Nht\Hocs\Entrusts\RoleRepository', 'Nht\Hocs\Entrusts\DbRoleRepository');
     }
 }

@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'vi',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,12 +140,12 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        App\Providers\UserServiceProvider::class,
-        App\Providers\RoleServiceProvider::class,
-        App\Providers\PermissionServiceProvider::class,
+        Nht\Providers\AppServiceProvider::class,
+        Nht\Providers\EventServiceProvider::class,
+        Nht\Providers\RouteServiceProvider::class,
+        Nht\Providers\UserServiceProvider::class,
+        Nht\Providers\RoleServiceProvider::class,
+        Nht\Providers\PermissionServiceProvider::class,
 
         Zizaco\Entrust\EntrustServiceProvider::class,
     ],

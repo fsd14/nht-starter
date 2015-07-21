@@ -1,6 +1,6 @@
 <?php
 
-namespace App\NHT\Users;
+namespace Nht\Hocs\Users;
 
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Auth\Authenticatable;

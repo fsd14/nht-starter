@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Nht\Http\Requests;
 
-use App\Http\Requests\Request;
+use Nht\Http\Requests\Request;
 
 class AdminLoginFormRequest extends Request
 {

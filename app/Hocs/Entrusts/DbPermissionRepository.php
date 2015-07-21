@@ -1,9 +1,9 @@
 <?php
 
-namespace App\NHT\Entrusts;
+namespace Nht\Hocs\Entrusts;
 
-use App\NHT\Core\BaseRepository;
-use App\Permission;
+use Nht\Hocs\Core\BaseRepository;
+use Nht\Hocs\Entrusts\Permission;
 
 /**
  * Class description.

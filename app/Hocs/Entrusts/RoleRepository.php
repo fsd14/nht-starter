@@ -1,6 +1,6 @@
 <?php
 
-namespace App\NHT\Entrusts;
+namespace Nht\Hocs\Entrusts;
 
 /**
  * Interface description.

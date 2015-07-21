@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Nht\Hocs\Entrusts;
 
 use Zizaco\Entrust\EntrustPermission;
 

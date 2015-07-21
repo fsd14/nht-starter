@@ -1,27 +1,22 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
 
-use Illuminate\Contracts\Auth\Guard;
-use App\Http\Requests\AdminLoginFormRequest;
-use App\Http\Controllers\Controller;
+namespace Nht\Http\Controllers\Admin;
+
+use Nht\Http\Controllers\Admin\AdminController;
+use Nht\Http\Requests\AdminLoginFormRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 /**
  * Class description.
  *
- * @author	Andrea Marco Sartori
+ * @author	AlvinTran
  */
-class AuthController extends Controller
+class AuthController extends AdminController
 {
 	use ThrottlesLogins;
 
-	protected $auth;
 	protected $loginPath = '/admin/login';
 	protected $redirectPath = '/admin/dashboard';
-
-	public function __construct(Guard $auth)
-	{
-		$this->auth = $auth;
-	}
 
 	/**
 	 * Get login view
@@ -29,7 +24,7 @@ class AuthController extends Controller
 	 */
 	public function login()
 	{
-		if ($this->auth->check() && $this->auth->user()->hasRole('admin')) {
+		if ($this->logger->isAdmin()) {
 			return redirect($this->redirectPath());
 		}
 		return view('admin.login');
@@ -73,7 +68,7 @@ class AuthController extends Controller
 	 */
 	public function dashboard()
 	{
-		return view('admin.partials.dashboard');
+		return view('admin/dashboard');
 	}
 
 	/**

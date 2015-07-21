@@ -3,7 +3,7 @@
 	<!--logo start-->
 	<div class="brand">
 		<a href="{{ route('dashboard') }}" class="logo">
-			Administrator
+			{{ trans('admin/general.heading') }}
 		</a>
 		<div class="sidebar-toggle-box">
 			<div class="fa fa-bars"></div>
@@ -14,75 +14,6 @@
 	<div class="nav notify-row" id="top_menu">
 		<!--  notification start -->
 		<ul class="nav top-menu">
-			<!-- settings start -->
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<i class="fa fa-tasks"></i>
-					<span class="badge bg-success">8</span>
-				</a>
-				<ul class="dropdown-menu extended tasks-bar">
-					<li>
-						<p class="">You have 8 pending tasks</p>
-					</li>
-					<li>
-						<a href="#">
-							<div class="task-info clearfix">
-								<div class="desc pull-left">
-									<h5>Target Sell</h5>
-									<p>25% , Deadline  12 June’13</p>
-								</div>
-								<span class="notification-pie-chart pull-right" data-percent="45">
-									<span class="percent"></span>
-								</span>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="task-info clearfix">
-								<div class="desc pull-left">
-									<h5>Product Delivery</h5>
-									<p>45% , Deadline  12 June’13</p>
-								</div>
-								<span class="notification-pie-chart pull-right" data-percent="78">
-									<span class="percent"></span>
-								</span>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="task-info clearfix">
-								<div class="desc pull-left">
-									<h5>Payment collection</h5>
-									<p>87% , Deadline  12 June’13</p>
-								</div>
-								<span class="notification-pie-chart pull-right" data-percent="60">
-									<span class="percent"></span>
-								</span>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="task-info clearfix">
-								<div class="desc pull-left">
-									<h5>Target Sell</h5>
-									<p>33% , Deadline  12 June’13</p>
-								</div>
-								<span class="notification-pie-chart pull-right" data-percent="90">
-									<span class="percent"></span>
-								</span>
-							</div>
-						</a>
-					</li>
-					<li class="external">
-						<a href="#">See All Tasks</a>
-					</li>
-				</ul>
-			</li>
-			<!-- settings end -->
-
 			<!-- inbox dropdown start-->
 			<li id="header_inbox_bar" class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -91,7 +22,7 @@
 				</a>
 				<ul class="dropdown-menu extended inbox">
 					<li>
-						<p class="red">You have 4 Mails</p>
+						<p class="red">{{ trans('admin/header.inbox.unread_messages', ['count' => 4]) }}</p>
 					</li>
 					<li>
 						<a href="#">
@@ -142,7 +73,7 @@
 						</a>
 					</li>
 					<li>
-					<a href="#">See all messages</a>
+					<a href="#">{{ trans('admin/header.inbox.see_all') }}</a>
 					</li>
 				</ul>
 			</li>
@@ -156,7 +87,7 @@
 				</a>
 				<ul class="dropdown-menu extended notification">
 					<li>
-						<p>Notifications</p>
+						<p>{{ trans('admin/header.notifications') }}</p>
 					</li>
 					<li>
 						<div class="alert alert-info clearfix">
@@ -189,30 +120,18 @@
 		<!--  notification end -->
 	</div>
 	<div class="top-nav clearfix">
-		<!--search & user info start-->
 		<ul class="nav pull-right top-menu">
-			<li>
-				<input type="text" class="form-control search" placeholder=" Search">
-			</li>
-			<!-- user login dropdown start-->
 			<li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<img alt="" src="/images/avatar1_small.jpg">
-					<span class="username">John Doe</span>
+					<img alt="avatar" src="/images/avatar1_small.jpg">
+					<span class="username">{{ Auth::user()->nickname }}</span>
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu extended logout">
-					<li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-					<li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-					<li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+					<li><a href="{{ url('/admin/users/' . Auth::user()->id . '/edit') }}"><i class=" fa fa-suitcase"></i>{{ trans('general.profile') }}</a></li>
+					<li><a href="{{ route('admin.logout') }}"><i class="fa fa-key"></i> {{ trans('general.logout') }}</a></li>
 				</ul>
 			</li>
-		<!-- user login dropdown end -->
-		<li>
-			<div class="toggle-right-box">
-				<div class="fa fa-bars"></div>
-			</div>
-		</li>
 		</ul>
 		<!--search & user info end-->
 	</div>
