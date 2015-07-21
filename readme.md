@@ -85,6 +85,8 @@ Hệ thống hiện tại có 2 file middleware tự dev như sau:
 
 - **CheckPermission.php**: Mục đích là để kiểm tra các quyền truy cập tới các requests. Khai báo quyền truy cập từng request tại file **app/Http/routes.php**
 
+Ví dụ:
+
     Route::delete('users/{users}', [
       'as' => 'user.destroy',
       'uses' => 'UserController@destroy',
@@ -125,7 +127,7 @@ Nếu sử dụng class `NhtPagination` thì ở cuối data grid đặt 1 đo�
 
     @include('admin/partials/paginate', ['data' => $users, 'appended' => ['email' => Request::get('email'), 'phone' => Request::get('phone')]])
 
-Với `data` là một đối tượng `Illuminate\Support\Collection` chứa dữ liệu generated trong data grid. Và `appended` là một mảng thể hiện tham số muốn nối tiếp vào url: `http://starter.lc/admin/users/?email=&phone=0934577886&page=2`
+Với `data` là một đối tượng `Illuminate\Support\Collection` chứa dữ liệu generated trong data grid. Và `appended` là một mảng thể hiện tham số muốn nối tiếp vào url: `http://starter.lc/admin/users/?email=&phone=0934577xxx&page=2`
 
 #### Đa ngôn ngữ
 
