@@ -3,8 +3,8 @@
 return [
 	'heading' => 'Administrator',
 	'title' => 'Đăng nhập :: Administrator',
-	'update_info' => 'Cập nhật thông tin',
-	'create_info' => 'Tạo mới thông tin',
+	'update_info' => 'Cập nhật',
+	'create_info' => 'Tạo mới',
 	'search' => 'Tìm kiếm',
 	'modules' => [
 		'dashboard' => 'Bảng điều khiển',
@@ -15,7 +15,7 @@ return [
 		'social' => 'Kết nối mạng xã hội',
 		'user' => 'Quản lý tài khoản',
 		'users' => 'Tài khoản',
-		'role' => 'Vai trò/Chức vụ',
-		'permission' => 'Quyền',
+		'roles' => 'Vai trò/Chức vụ',
+		'permissions' => 'Quyền',
 	]
 ];

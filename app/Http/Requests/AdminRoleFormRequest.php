@@ -4,7 +4,7 @@ namespace Nht\Http\Requests;
 
 use Nht\Http\Requests\Request;
 
-class AdminUserFormRequest extends Request
+class AdminRoleFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,18 +23,17 @@ class AdminUserFormRequest extends Request
      */
     public function rules()
     {
-        $rules = [
-            'email'    => 'required|email',
-            'nickname' => 'required',
-            'name'     => 'required',
-            'phone'    => 'required',
-            'address'  => 'required'
+        return [
+            'name' => 'required',
+            'display_name' => 'required',
         ];
+    }
 
-        if ($this->is('admin/users')) {
-            $rules['email'] .= '|unique:users';
-        }
-
-        return $rules;
+    public function messages()
+    {
+        return [
+            'name.required' => trans('admin/validation.role_name_required'),
+            'display_name.required' => trans('admin/validation.role_key_required')
+        ];
     }
 }

@@ -33,9 +33,5 @@ class PermissionTableSeeder extends Seeder
 				'description' => 'Delete an user'
 			]
 		]);
-
-		// DB::table('permission')->insert();
-		// DB::table('permission')->insert();
-		// DB::table('permission')->insert();
    }
 }

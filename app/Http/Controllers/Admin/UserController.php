@@ -52,7 +52,7 @@ class UserController extends AdminController
 	 */
 	public function store(AdminUserFormRequest $request)
 	{
-		if ($this->user->create($request->except('_token', '_method')))
+		if ($this->user->create($request->except('_token')))
 		{
 			return redirect()->route('user.create')->with('success', trans('general.messages.create_success'));
 		}
@@ -79,7 +79,7 @@ class UserController extends AdminController
 	 */
 	public function update($id, AdminUserFormRequest $request)
 	{
-		if ($this->user->update($request->except('_token', '_method'), ['id' => $id]))
+		if ($this->user->update($request->except('_token'), ['id' => $id]))
 		{
 			return redirect()->route('user.edit', $id)->with('success', trans('general.messages.update_success'));
 		}

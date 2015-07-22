@@ -1,7 +1,7 @@
 @extends('admin/layouts/master')
 
 @section('main-content')
-	<h3>{{ trans('admin/general.create_info') }}</h3>
+	<h3>{{ trans('admin/general.create_info') . ' ' . trans('admin/general.modules.users') }}</h3>
 	<div class="panel-body">
 		<form class="form-horizontal bucket-form" method="post" action="{{ url('/admin/users') }}" enctype="multipart/form-data">
 			<div class="form-group">
@@ -53,7 +53,6 @@
 			</div>
 			{!! csrf_field() !!}
 			<input type="file" name="avatar" id="avatar">
-			<input type="hidden" name="_method" value="PUT">
 		</form>
 	</div>
 @stop

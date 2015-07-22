@@ -32,9 +32,9 @@ class AdminLoginFormRequest extends Request
     public function messages()
     {
     	return [
-			'email.required'    => 'Nhập email',
-			'email.email'       => 'Email không đúng định dạng',
-			'password.required' => 'Nhập password'
+			'email.required'    => trans('admin/validation.email_required'),
+			'email.email'       => trans('admin/validation.email_not_email'),
+			'password.required' => trans('admin/validation.pwd_required')
     	];
     }
 }

@@ -16,6 +16,9 @@ return [
 	'male'					=> 'Nam',
 	'female'					=> 'Nữ',
 	'unknown'				=> 'Không xác định',
+	'role_name'				=> 'Tên chức vụ',
+	'role_key'				=> 'Mã chức vụ',
+	'description'			=> 'Mô tả',
 	'btn' => [
 		'create' => 'Tạo mới',
 		'update' => 'Cập nhật',

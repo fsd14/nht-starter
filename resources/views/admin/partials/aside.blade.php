@@ -29,8 +29,8 @@
 					</a>
 					<ul class="sub">
 						<li class="{{ Request::is("admin/users*") ? 'active' : '' }}"><a href="{{ route('user.index') }}">{{ trans('admin/general.modules.users') }}</a></li>
-						<li class="{{ Request::is("admin/roles*") ? 'active' : '' }}"><a href="horizontal_menu.html">{{ trans('admin/general.modules.role') }}</a></li>
-						<li class="{{ Request::is("admin/permissions*") ? 'active' : '' }}"><a href="language_switch.html">{{ trans('admin/general.modules.permission') }}</a></li>
+						<li class="{{ Request::is("admin/roles*") ? 'active' : '' }}"><a href="{{ route('role.index') }}">{{ trans('admin/general.modules.roles') }}</a></li>
+						<li class="{{ Request::is("admin/permissions*") ? 'active' : '' }}"><a href="language_switch.html">{{ trans('admin/general.modules.permissions') }}</a></li>
 					</ul>
 				</li>
 			</ul>

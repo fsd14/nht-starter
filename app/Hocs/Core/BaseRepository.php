@@ -36,7 +36,7 @@ abstract class BaseRepository
 	 * @param  integer $pageSize
 	 * @return Illuminate\Support\Collection Model collections
 	 */
-	public function getAllWithPaginate($filter = [], $pageSize = 1)
+	public function getAllWithPaginate($filter = [], $pageSize = 20)
 	{
 		if ( ! empty($filter))
 		{
@@ -81,8 +81,9 @@ abstract class BaseRepository
 	 * Delete an exist model
 	 * @return Bool
 	 */
-	public function delete()
+	public function delete($id)
 	{
-		return $this->model->delete();
+		$user = $this->getById($id);
+		return $user->delete();
 	}
 }

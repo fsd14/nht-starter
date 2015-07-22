@@ -26,7 +26,7 @@
 								<th>{{ trans('form.nickname') }}</th>
 								<th>{{ trans('form.email') }}</th>
 								<th>{{ trans('form.phone') }}</th>
-								<th>{{ trans('form.gender') }}</th>
+								<th>{{ trans('table.role_column') }}</th>
 								<th colspan="2" align="center">{{ trans('table.actions') }}</th>
 							</tr>
 						</thead>
@@ -40,13 +40,12 @@
 									<td>{{ $user->email }}</td>
 									<td>{{ $user->phone }}</td>
 									<td>
-										@if ($user->gender == 1)
-											{{ trans('form.male') }}
-										@elseif ($user->gender == 2)
-											{{ trans('form.female') }}
-										@else
-											{{ trans('form.unknown') }}
-										@endif
+										@foreach ($user->roles as $ind => $role)
+											{{ $role->display_name }}
+											@if ($user->roles->count() > 1 && $ind < ($user->roles->count() - 1))
+												{{ ' / ' }}
+											@endif
+										@endforeach
 									</td>
 									<td>
 										@if($user->id != 1)
