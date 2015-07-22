@@ -23,6 +23,6 @@ class PermissionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Nht\Hocs\Entrusts\RoleRepository', 'Nht\Hocs\Entrusts\DbRoleRepository');
+        $this->app->singleton('Nht\Hocs\Entrusts\PermissionRepository', 'Nht\Hocs\Entrusts\DbPermissionRepository');
     }
 }

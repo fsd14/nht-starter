@@ -7,6 +7,6 @@ return [
 	'restore' => 'Khôi phục',
 	'actions' => 'Thao tác',
 	'count_record' => 'Đang hiển thị <b>:perPage</b> trong tổng số <b>:total</b> bản ghi.',
-	'count_role_users' => 'Số thành viên',
+	'count_role_users' => 'Lượng thành viên',
 	'role_column' => 'Vai trò'
 ];

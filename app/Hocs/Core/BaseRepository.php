@@ -21,13 +21,23 @@ abstract class BaseRepository
 	}
 
 	/**
-	 * Get item of model
+	 * Get item of model. If model not exist then it will throw an exception
 	 * @param  int $id Model ID
 	 * @return Model
 	 */
 	public function getById($id)
 	{
 		return $this->model->findOrFail($id);
+	}
+
+	/**
+	 * Get item of model
+	 * @param  int $id Model ID
+	 * @return Model
+	 */
+	public function find($id)
+	{
+		return $this->model->find($id);
 	}
 
 	/**

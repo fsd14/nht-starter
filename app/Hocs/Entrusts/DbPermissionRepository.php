@@ -10,7 +10,7 @@ use Nht\Hocs\Entrusts\Permission;
  *
  * @author	AlvinTran
  */
-class DbPermissionRepository extends BaseRepository implements PermistionRepository
+class DbPermissionRepository extends BaseRepository implements PermissionRepository
 {
 	protected $model;
 

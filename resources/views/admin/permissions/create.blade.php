@@ -1,22 +1,22 @@
 @extends('admin/layouts/master')
 
 @section('main-content')
-	<h3>{{ trans('admin/general.create_info') . ' ' . trans('admin/general.modules.roles') }}</h3>
+	<h3>{{ trans('admin/general.create_info') . ' ' . trans('admin/general.modules.permissions') }}</h3>
 	<div class="panel-body">
-		<form class="form-horizontal bucket-form" method="post" action="{{ url('/admin/roles') }}">
+		<form class="form-horizontal bucket-form" method="post" action="{{ url('/admin/permissions') }}">
 			<div class="form-group {{ $errors->has('display_name') ? 'has-error' : '' }}">
-				<label for="display_name" class="col-sm-3 control-label">{{ trans('form.role_name') }} <b class="text-danger">*</b></label>
+				<label for="display_name" class="col-sm-3 control-label">{{ trans('form.perm_name') }} <b class="text-danger">*</b></label>
 				<div class="col-sm-6">
-					<input type="display_name" class="form-control" id="display_name" name="display_name" placeholder="{{ trans('form.role_name') }}" value="{{ Request::old('display_name') }}" />
-					<i class="help-inline text-muted">Ex: Nhân viên</i>
+					<input type="display_name" class="form-control" id="display_name" name="display_name" placeholder="{{ trans('form.perm_name') }}" value="{{ Request::old('display_name') }}" />
+					<i class="help-inline text-muted">Ex: Edit blog</i>
 					{!! $errors->first('display_name', '<span class="help-inline text-danger">:message</span>') !!}
 				</div>
 			</div>
 			<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-				<label for="name" class="col-sm-3 control-label">{{ trans('form.role_key') }} <b class="text-danger">*</b></label>
+				<label for="name" class="col-sm-3 control-label">{{ trans('form.perm_key') }} <b class="text-danger">*</b></label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="name" name="name" placeholder="{{ trans('form.role_key') }}" value="{{ Request::old('name') }}" />
-					<i class="help-inline text-muted">Ex: staff</i>
+					<input type="text" class="form-control" id="name" name="name" placeholder="{{ trans('form.perm_key') }}" value="{{ Request::old('name') }}" />
+					<i class="help-inline text-muted">Ex: blog.edit</i>
 					{!! $errors->first('name', '<span class="help-inline text-danger">:message</span>') !!}
 				</div>
 			</div>

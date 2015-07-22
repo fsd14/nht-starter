@@ -18,6 +18,8 @@ return [
 	'unknown'				=> 'Không xác định',
 	'role_name'				=> 'Tên chức vụ',
 	'role_key'				=> 'Mã chức vụ',
+	'perm_name'				=> 'Tên quyền',
+	'perm_key'				=> 'Mã quyền',
 	'description'			=> 'Mô tả',
 	'btn' => [
 		'create' => 'Tạo mới',

@@ -121,6 +121,47 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 			]);
 		});
 
+		/**
+		 * Permissions module
+		 */
+		Route::group(['prefix' => 'permissions'], function() {
+			Route::get('/', [
+				'as' => 'permission.index',
+				'uses' => 'PermissionController@index',
+				'permissions' => 'permission.view',
+			]);
+
+			Route::get('create', [
+				'as' => 'permission.create',
+				'uses' => 'PermissionController@create',
+				'permissions' => 'permission.create',
+			]);
+
+			Route::post('/', [
+				'as' => 'permission.store',
+				'uses' => 'PermissionController@store',
+				'permissions' => 'permission.store',
+			]);
+
+			Route::get('{permission}/edit', [
+				'as' => 'permission.edit',
+				'uses' => 'PermissionController@edit',
+				'permissions' => 'permission.edit',
+			]);
+
+			Route::post('{permission}', [
+				'as' => 'permission.update',
+				'uses' => 'PermissionController@update',
+				'permissions' => 'permission.update',
+			]);
+
+			Route::get('{permission}', [
+				'as' => 'permission.destroy',
+				'uses' => 'PermissionController@destroy',
+				'permissions' => 'permission.destroy',
+			]);
+		});
+
 	});
 });
 
