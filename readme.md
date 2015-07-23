@@ -18,9 +18,13 @@ Core framework của Nguyên Hà dựa trên nền tảng framework Laravel 5.
 
 Thông tin đăng nhập tài khoản Super Admin:
 
-**Tài khoản**: admin@nguyenhats.com
+> **URL**: http://domain.app/admin/login
 
-**Mật khẩu**: admin1234
+> **Tài khoản**: admin@nguyenhats.com
+
+> **Mật khẩu**: admin1234
+
+Chú ý: Thay *domain.app* bằng domain của bạn.
 
 #### Coding style và quy tắc tạo file
 

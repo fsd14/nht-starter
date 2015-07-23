@@ -12,23 +12,24 @@
 */
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+
 	/**
 	 * Admin auth page
 	 */
 	Route::get('login', [
 		'as' => 'admin.login',
 		'uses' => 'AuthController@login'
-		]);
+	]);
 
 	Route::post('login', [
 		'as' => 'admin.doLogin',
 		'uses' => 'AuthController@authenticate'
-		]);
+	]);
 
 	Route::get('logout', [
 		'as' => 'admin.logout',
 		'uses' => 'AuthController@logout'
-		]);
+	]);
 
 	Route::group(['middleware' => ['admin', 'acl']], function() {
 		/**
