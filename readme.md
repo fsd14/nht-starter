@@ -9,7 +9,7 @@ Core framework của Nguyên Hà dựa trên nền tảng framework Laravel 5.
 - Chạy lệnh `composer install` để cài đặt các packages cần thiết. Danh sách packages xem trong file **package.json**.
 - Trên terminal chạy lệnh `php artisan key:generate` để lấy key, sau đó copy & paste vào giá trị biến `APP_KEY` trong file **.env**
 - Duplicate file **env.example** và rename thành file **.env**
-- Nếu dùng [Homestead](http://laravel.com/docs/5.1/homestead) thì dùng thông tin mặc định, database name là `nht-starter`.
+- Nếu dùng [Homestead](http://laravel.com/docs/5.1/homestead) thì dùng thông tin mặc định, chỉ cần sửa database name trong file **.env** là `nht-starter` hoặc bất kỳ tên nào bạn muốn.
 - Chạy lệnh `php artisan migrate` và `php artisan db:seed` để generate dữ liệu Super Admin, Role, Permission...
 - Chạy lệnh `php artisan vendor:publish` để publish các file config của các packpages.
 - Mở file **config/entrust.php** và sửa lại thông tin về model với namespace bắt đầu bằng `Nht\Hocs\`. Ví dụ: `Nht\Hocs\Entrust\Role`. Tương tự với các config model khác trong file đó.
