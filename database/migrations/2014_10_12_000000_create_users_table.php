@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->tinyInteger('gender');
-            $table->tinyInteger('active', 1);
+            $table->tinyInteger('active');
             $table->rememberToken();
             $table->timestamps();
         });

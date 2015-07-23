@@ -5,15 +5,18 @@ namespace Nht\Http\Controllers\Admin;
 use Nht\Http\Requests\AdminRoleFormRequest;
 use Nht\Http\Controllers\Admin\AdminController;
 use Nht\Hocs\Entrusts\RoleRepository;
+use Nht\Hocs\Entrusts\PermissionRepository;
 
 
 class RoleController extends AdminController
 {
    protected $role;
+   protected $perm;
 
-	public function __construct(RoleRepository $role)
+	public function __construct(RoleRepository $role, PermissionRepository $perm)
 	{
-		$this->role = $role;
+      $this->role = $role;
+		$this->perm = $perm;
 		parent::__construct();
 	}
 
@@ -35,7 +38,8 @@ class RoleController extends AdminController
     */
    public function create()
    {
-      return view('admin/roles/create');
+      $permissions = $this->perm->getAll();
+      return view('admin/roles/create', compact('permissions'));
    }
 
    /**
@@ -45,7 +49,10 @@ class RoleController extends AdminController
     */
    public function store(AdminRoleFormRequest $request)
    {
-      if ($this->role->create($request->all())) {
+      if ($newRole = $this->role->create($request->all()))
+      {
+         $perms = $request->get('perms');
+         $newRole->perms()->sync($perms);
          return redirect()->route('role.create')->with('success', trans('general.messages.create_success'));
       }
       return redirect()->back()->withInputs()->with('error', trans('general.messages.create_fail'));
@@ -60,7 +67,9 @@ class RoleController extends AdminController
    public function edit($id)
    {
       $role = $this->role->getById($id);
-      return view('admin/roles/edit', compact('role'));
+      $permissions = $this->perm->getAll();
+      $role_permissions = array_pluck($role->perms, 'id');
+      return view('admin/roles/edit', compact('role', 'permissions', 'role_permissions'));
    }
 
    /**
@@ -71,8 +80,13 @@ class RoleController extends AdminController
     */
    public function update($id, AdminRoleFormRequest $request)
    {
-      if ($this->role->update($request->except('_token'), ['id' => $id]))
+      if ($this->role->update($request->except('_token', 'perms'), ['id' => $id]))
       {
+         if ($role = $this->role->find($id))
+         {
+            $perms = $request->get('perms');
+            $role->perms()->sync($perms);
+         }
          return redirect()->route('role.edit', $id)->with('success', trans('general.messages.update_success'));
       }
       return redirect()->back()->withInputs()->with('error', trans('general.messages.update_fail'));

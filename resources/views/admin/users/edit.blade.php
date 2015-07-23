@@ -47,6 +47,27 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="role_name" class="col-sm-3 control-label">{{ trans('form.role_name') }}</label>
+				<div class="col-sm-6">
+					<ul class="role-list list-inline checkbox-list">
+						<li>
+							<label for="checkbox_all" class="text-danger noselect">
+								<input type="checkbox" id="checkbox_all" class="checkbox_all"> {{ trans('form.all') }}
+								<p class="text-muted">All</p>
+							</label>
+						</li>
+						@foreach ($roles as $role)
+							<li>
+								<label class="tooltips noselect" for="role_{{ $role->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $role->description }}">
+									<input class="checkbox-child" type="checkbox" id="role_{{ $role->id }}" name="roles[]" value="{{ $role->id }}" {{ in_array($role->id, $user_roles) ? 'checked' : '' }}> {{ $role->display_name }}
+									<p class="text-muted">{{ $role->name }}</p>
+								</label>
+							</li>
+						@endforeach
+					</ul>
+				</div>
+			</div>
+			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-6">
 			   	<button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> {{ trans('form.btn.update') }}</button>
 			   	<a href="{{ url('/admin/users') }}" class="btn btn-link">{{ trans('form.btn.back') }}</a>

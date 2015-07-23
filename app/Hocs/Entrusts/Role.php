@@ -6,5 +6,5 @@ use Zizaco\Entrust\EntrustRole;
 
 class Role extends EntrustRole
 {
-   protected $guarded = ['_token'];
+   protected $guarded = ['_token', 'perms'];
 }

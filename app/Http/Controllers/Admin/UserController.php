@@ -3,6 +3,7 @@
 namespace Nht\Http\Controllers\Admin;
 
 use Nht\Hocs\Users\UserRepository;
+use Nht\Hocs\Entrusts\RoleRepository;
 use Nht\Http\Controllers\Admin\AdminController;
 use Illuminate\Http\Request;
 use Nht\Http\Requests\AdminUserFormRequest;
@@ -15,10 +16,12 @@ use Nht\Http\Requests\AdminUserFormRequest;
 class UserController extends AdminController
 {
 	protected $user;
+	protected $role;
 
-	public function __construct(UserRepository $user)
+	public function __construct(UserRepository $user, RoleRepository $role)
 	{
 		$this->user = $user;
+		$this->role = $role;
 		parent::__construct();
 	}
 
@@ -42,7 +45,8 @@ class UserController extends AdminController
 	 */
 	public function create()
 	{
-		return view('admin/users/create');
+		$roles = $this->role->getAll();
+		return view('admin/users/create', compact('roles'));
 	}
 
 	/**
@@ -52,8 +56,10 @@ class UserController extends AdminController
 	 */
 	public function store(AdminUserFormRequest $request)
 	{
-		if ($this->user->create($request->except('_token')))
+		if ($newUser = $this->user->create($request->all()))
 		{
+			$roles = $request->get('roles');
+         $newUser->roles()->sync($roles);
 			return redirect()->route('user.create')->with('success', trans('general.messages.create_success'));
 		}
 		return redirect()->back()->withInputs()->with('error', trans('general.messages.create_fail'));
@@ -68,7 +74,9 @@ class UserController extends AdminController
 	public function edit($id)
 	{
 		$user = $this->user->getById($id);
-		return view('admin/users/edit', compact('user'));
+		$roles = $this->role->getAll();
+		$user_roles = array_pluck($user->roles, 'id');
+		return view('admin/users/edit', compact('user', 'roles', 'user_roles'));
 	}
 
 	/**
@@ -79,8 +87,13 @@ class UserController extends AdminController
 	 */
 	public function update($id, AdminUserFormRequest $request)
 	{
-		if ($this->user->update($request->except('_token'), ['id' => $id]))
+		if ($this->user->update($request->except('_token', 'roles'), ['id' => $id]))
 		{
+			if ($user = $this->user->find($id))
+			{
+			   $roles = $request->get('roles');
+			   $user->roles()->sync($roles);
+			}
 			return redirect()->route('user.edit', $id)->with('success', trans('general.messages.update_success'));
 		}
 		return redirect()->back()->withInputs()->with('error', trans('general.messages.update_fail'));

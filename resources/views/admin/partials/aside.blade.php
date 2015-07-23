@@ -16,7 +16,6 @@
 						<span>{{ trans('admin/general.modules.setting') }}</span>
 					</a>
 					<ul class="sub">
-						<li><a href="">{{ trans('admin/general.modules.module') }}</a></li>
 						<li><a href="horizontal_menu.html">{{ trans('admin/general.modules.site') }}</a></li>
 						<li><a href="language_switch.html">{{ trans('admin/general.modules.metadata') }}</a></li>
 						<li><a href="language_switch.html">{{ trans('admin/general.modules.social') }}</a></li>

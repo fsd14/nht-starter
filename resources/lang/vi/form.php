@@ -21,6 +21,7 @@ return [
 	'perm_name'				=> 'Tên quyền',
 	'perm_key'				=> 'Mã quyền',
 	'description'			=> 'Mô tả',
+	'all'						=> 'Tất cả',
 	'btn' => [
 		'create' => 'Tạo mới',
 		'update' => 'Cập nhật',

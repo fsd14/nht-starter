@@ -28,6 +28,27 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="perm_name" class="col-sm-3 control-label">{{ trans('form.perm_name') }}</label>
+				<div class="col-sm-6">
+					<ul class="perm-list list-inline checkbox-list">
+						<li>
+							<label for="checkbox_all" class="text-danger noselect">
+								<input type="checkbox" id="checkbox_all" class="checkbox_all"> {{ trans('form.all') }}
+								<p class="text-muted">All</p>
+							</label>
+						</li>
+						@foreach ($permissions as $perm)
+							<li>
+								<label class="tooltips noselect" for="perm_{{ $perm->id }}" data-placement="top" data-toggle="tooltip" data-original-title="{{ $perm->description }}">
+									<input class="checkbox-child" type="checkbox" id="perm_{{ $perm->id }}" name="perms[]" value="{{ $perm->id }}" {{ in_array($perm->id, $role_permissions) ? 'checked' : '' }}> {{ $perm->display_name }}
+									<p class="text-muted">{{ $perm->name }}</p>
+								</label>
+							</li>
+						@endforeach
+					</ul>
+				</div>
+			</div>
+			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-6">
 					<button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> {{ trans('form.btn.update') }}</button>
 					<a href="{{ url('/admin/roles') }}" class="btn btn-link">{{ trans('form.btn.back') }}</a>

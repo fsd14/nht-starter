@@ -7,6 +7,11 @@ $(function() {
       if (answer) return window.location.href = $(this).attr('href');
       else return false;
    });
+
+   $('.checkbox_all').click(function(ev) {
+      var that = $(this);
+      that.parents('.checkbox-list').find('.checkbox-child').prop('checked', that.is(':checked'));
+   });
 });
 
 /**
