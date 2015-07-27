@@ -58,7 +58,7 @@ class UserController extends AdminController
 	{
 		if ($newUser = $this->user->create($request->all()))
 		{
-			$roles = $request->get('roles');
+			$roles = (array) $request->get('roles');
          $newUser->roles()->sync($roles);
 			return redirect()->route('user.create')->with('success', trans('general.messages.create_success'));
 		}
@@ -91,7 +91,7 @@ class UserController extends AdminController
 		{
 			if ($user = $this->user->find($id))
 			{
-			   $roles = $request->get('roles');
+			   $roles = (array) $request->get('roles');
 			   $user->roles()->sync($roles);
 			}
 			return redirect()->route('user.edit', $id)->with('success', trans('general.messages.update_success'));

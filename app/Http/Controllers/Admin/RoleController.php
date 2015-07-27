@@ -51,7 +51,7 @@ class RoleController extends AdminController
    {
       if ($newRole = $this->role->create($request->all()))
       {
-         $perms = $request->get('perms');
+         $perms = (array) $request->get('perms');
          $newRole->perms()->sync($perms);
          return redirect()->route('role.create')->with('success', trans('general.messages.create_success'));
       }
@@ -84,7 +84,7 @@ class RoleController extends AdminController
       {
          if ($role = $this->role->find($id))
          {
-            $perms = $request->get('perms');
+            $perms = (array) $request->get('perms');
             $role->perms()->sync($perms);
          }
          return redirect()->route('role.edit', $id)->with('success', trans('general.messages.update_success'));
